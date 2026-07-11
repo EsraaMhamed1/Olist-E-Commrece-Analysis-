@@ -198,6 +198,14 @@ WHERE  order_estimated_delivery_date < order_purchase_timestamp;
 
 go 
 
+-- Referential Integrity Check
+SELECT *
+FROM   orders o
+       LEFT JOIN customers c
+              ON o.customer_id = c.customer_id
+WHERE  c.customer_id IS NULL; 
+go
+
 -----------------------------------------------------------------
 -----------------------------------------------------------------
 
