@@ -331,4 +331,112 @@ go
 ---------------------------------------------------------
 ---------------------------------------------------------
 
+------------------------
+--4. products 
+------------------------
+go
 
+-- show data 
+SELECT *
+FROM   products;
+
+go
+
+-- count row 
+SELECT Count(*) AS total_rows
+FROM   products;
+
+go
+
+-- uniqueness
+SELECT Count(*)                   AS total_rows,
+       Count(DISTINCT product_id) AS dist_product_id
+FROM   products;
+
+go
+
+-- check nulls
+SELECT Sum(CASE
+             WHEN product_id IS NULL THEN 1
+             ELSE 0
+           END) AS product_id_nulls,
+       Sum(CASE
+             WHEN product_category_name IS NULL THEN 1
+             ELSE 0
+           END) AS product_category_name_nulls,
+       Sum(CASE
+             WHEN product_name_lenght IS NULL THEN 1
+             ELSE 0
+           END) AS product_name_lenght_nulls,
+       Sum(CASE
+             WHEN product_description_lenght IS NULL THEN 1
+             ELSE 0
+           END) AS product_description_lenght,
+       Sum(CASE
+             WHEN product_photos_qty IS NULL THEN 1
+             ELSE 0
+           END) AS product_photos_qty_nulls,
+       Sum(CASE
+             WHEN product_weight_g IS NULL THEN 1
+             ELSE 0
+           END) AS product_weight_g,
+       Sum(CASE
+             WHEN product_length_cm IS NULL THEN 1
+             ELSE 0
+           END) AS product_length_cm,
+       Sum(CASE
+             WHEN product_height_cm IS NULL THEN 1
+             ELSE 0
+           END) AS product_height_cm,
+       Sum(CASE
+             WHEN product_width_cm IS NULL THEN 1
+             ELSE 0
+           END) AS product_width_cm
+FROM   products;
+
+go
+
+-- Business rules 
+SELECT Count(*) AS zero_weight
+FROM   products
+WHERE  product_weight_g <= 0;
+
+go
+
+SELECT Count(*) AS zero_width
+FROM   products
+WHERE  product_width_cm <= 0;
+
+go
+
+SELECT Count(*) AS zero_height
+FROM   products
+WHERE  product_height_cm <= 0;
+
+go
+
+SELECT Count(*) AS zero_length
+FROM   products
+WHERE  product_length_cm <= 0;
+
+go
+
+SELECT Count(*) AS no_photos
+FROM   products
+WHERE  product_photos_qty <= 0;
+
+go
+
+-- num of categories 
+SELECT Count(DISTINCT product_category_name) AS num_of_categories
+FROM   products;
+
+go
+
+SELECT Count(*) AS category_nulls
+FROM   products
+WHERE  product_category_name IS NULL; 
+go 
+
+-------------------------------------------------------
+-------------------------------------------------------
