@@ -819,7 +819,159 @@ FROM   category_translation c
               ON p.product_category_name = c.product_category_name
 WHERE  p.product_category_name IS NULL; 
 go 
-  
-  
 
-go 
+--------------------------------------------
+  -----------------------------------------
+ -----------------------
+-- geolocation
+-----------------------
+go
+
+-- show data 
+SELECT *
+FROM   geolocation;
+
+go
+
+-- count rows 
+SELECT Count(*) AS total_rows
+FROM   geolocation;
+
+go
+
+-- uniqueness 
+SELECT Count(*)                                    AS ctn,
+       Count(DISTINCT geolocation_zip_code_prefix) AS pk_test
+FROM   geolocation;
+
+go
+
+-- citis 
+SELECT Count(DISTINCT geolocation_city) AS num_of_cities
+FROM   geolocation;
+
+go
+
+-- states  
+SELECT Count(DISTINCT geolocation_state) AS num_of_states
+FROM   geolocation;
+
+go
+
+-- check nulls 
+SELECT Sum (CASE
+              WHEN geolocation_zip_code_prefix IS NULL THEN 1
+              ELSE 0
+            END) AS geolocation_zip_code_prefix_nulls,
+       Sum (CASE
+              WHEN geolocation_lat IS NULL THEN 1
+              ELSE 0
+            END) AS geolocation_lat_nulls,
+       Sum (CASE
+              WHEN geolocation_lng IS NULL THEN 1
+              ELSE 0
+            END) AS geolocation_lng_nulls,
+       Sum (CASE
+              WHEN geolocation_city IS NULL THEN 1
+              ELSE 0
+            END) AS geolocation_city_nulls,
+       Sum (CASE
+              WHEN geolocation_state IS NULL THEN 1
+              ELSE 0
+            END) AS geolocation_state_nulls
+FROM   geolocation;
+
+go
+
+-- Business rules 
+SELECT Count(*) AS ctn
+FROM   geolocation
+WHERE  geolocation_lat > 90
+        OR geolocation_lat <- 90;
+
+go
+
+SELECT Count(*) AS ctn
+FROM   geolocation
+WHERE  geolocation_lng > 180
+        OR geolocation_lng <- 180;
+
+go
+
+-----------------------
+-- geolocation
+-----------------------
+go
+
+-- show data 
+SELECT *
+FROM   geolocation;
+
+go
+
+-- count rows 
+SELECT Count(*) AS total_rows
+FROM   geolocation;
+
+go
+
+-- uniqueness 
+SELECT Count(*)                                    AS ctn,
+       Count(DISTINCT geolocation_zip_code_prefix) AS pk_test
+FROM   geolocation;
+
+go
+
+-- citis 
+SELECT Count(DISTINCT geolocation_city) AS num_of_cities
+FROM   geolocation;
+
+go
+
+-- states  
+SELECT Count(DISTINCT geolocation_state) AS num_of_states
+FROM   geolocation;
+
+go
+
+-- check nulls 
+SELECT Sum (CASE
+              WHEN geolocation_zip_code_prefix IS NULL THEN 1
+              ELSE 0
+            END) AS geolocation_zip_code_prefix_nulls,
+       Sum (CASE
+              WHEN geolocation_lat IS NULL THEN 1
+              ELSE 0
+            END) AS geolocation_lat_nulls,
+       Sum (CASE
+              WHEN geolocation_lng IS NULL THEN 1
+              ELSE 0
+            END) AS geolocation_lng_nulls,
+       Sum (CASE
+              WHEN geolocation_city IS NULL THEN 1
+              ELSE 0
+            END) AS geolocation_city_nulls,
+       Sum (CASE
+              WHEN geolocation_state IS NULL THEN 1
+              ELSE 0
+            END) AS geolocation_state_nulls
+FROM   geolocation;
+
+go
+
+-- Business rules 
+SELECT Count(*) AS ctn
+FROM   geolocation
+WHERE  geolocation_lat > 90
+        OR geolocation_lat <- 90;
+
+go
+
+SELECT Count(*) AS ctn
+FROM   geolocation
+WHERE  geolocation_lng > 180
+        OR geolocation_lng <- 180;
+
+go  
+
+
