@@ -691,34 +691,34 @@ go
 SELECT Sum(CASE
              WHEN review_id IS NULL THEN 1
              ELSE 0
-           END),
+           END) AS review_id_nulls,
        Sum(CASE
              WHEN order_id IS NULL THEN 1
              ELSE 0
-           END),
+           END) AS order_id_nulls,
        Sum(CASE
              WHEN review_score IS NULL THEN 1
              ELSE 0
-           END),
+           END) AS review_score_nulls,
        Sum(CASE
              WHEN review_comment_title IS NULL THEN 1
              ELSE 0
-           END),
+           END) AS review_comment_title_nulls,
        Sum(CASE
              WHEN review_comment_message IS NULL THEN 1
              ELSE 0
-           END),
+           END) AS review_comment_message_nulls,
        Sum(CASE
              WHEN review_creation_date IS NULL THEN 1
              ELSE 0
-           END),
+           END) AS review_creation_date_nulls,
        Sum(CASE
              WHEN review_answer_timestamp IS NULL THEN 1
              ELSE 0
-           END)
+           END) AS review_answer_timestamp_nulls
 FROM   order_reviews;
 
-go
+go 
 
 -- Business Rules 
 -- review score 
