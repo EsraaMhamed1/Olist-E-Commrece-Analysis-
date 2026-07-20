@@ -141,3 +141,13 @@ WHERE  order_status = 'canceled';
 go 
 
 
+--11. Average Delivery Time
+SELECT Avg(Datediff(day, order_purchase_timestamp, order_delivered_customer_date
+           )) AS
+       avg_delivery_date_days
+FROM   orders
+WHERE  order_status = 'delivered';
+
+go 
+
+
