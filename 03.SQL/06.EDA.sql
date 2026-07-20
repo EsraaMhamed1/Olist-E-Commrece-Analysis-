@@ -134,3 +134,10 @@ FROM   customers;
 
 go 
 
+SELECT Count(*) AS canceled_orders
+FROM   orders
+WHERE  order_status = 'canceled';
+
+go 
+
+
