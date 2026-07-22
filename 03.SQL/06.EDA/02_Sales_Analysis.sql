@@ -176,8 +176,3 @@ go
 
 
 
--- 8. highest priced products
------------------------------
-
--- 9. lowest priced products
------------------------------
