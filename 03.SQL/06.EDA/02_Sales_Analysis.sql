@@ -68,11 +68,33 @@ go
 -- 4. top 10 selling categories
 -------------------------------
 
--- 5. top 10 selling products
------------------------------
 
--- 6. revenue by state
+
+-- 5. revenue by state
 ----------------------
+go 
+
+select *  from order_items ; 
+go 
+
+select * from customers ; 
+go 
+
+select * from orders; 
+go 
+
+select c.customer_state , round(sum(oi.price),2) as revenue 
+from customers c 
+join orders o 
+on o.customer_id = c.customer_id 
+join order_items oi 
+on o.order_id = oi.order_id 
+where order_status = 'delivered'
+group by c.customer_state 
+order by revenue desc; 
+go 
+
+
 
 -- 7. revenue by city
 ---------------------
