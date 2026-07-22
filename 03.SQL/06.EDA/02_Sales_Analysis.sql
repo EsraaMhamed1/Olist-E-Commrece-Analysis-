@@ -64,10 +64,35 @@ order by year(o.order_purchase_timestamp) , month(o.order_purchase_timestamp );
 go 
 
 
-
 -- 4. top 10 selling categories
 -------------------------------
+go 
 
+select * from order_items; 
+go 
+
+select * from products ; 
+go 
+
+select * from orders ; 
+go 
+
+select * from category_translation ; 
+go 
+
+select top(10) ct.[ product_category_name_english] , count(oi.product_id) as products_sold 
+from orders o 
+join order_items oi 
+on o.order_id = oi.order_id 
+join products p 
+on oi.product_id = p.product_id
+join category_translation ct
+on p.product_category_name = ct.product_category_name
+where o.order_status = 'delivered' 
+group by ct.[ product_category_name_english]
+ order by products_sold desc; 
+
+go 
 
 
 -- 5. revenue by state
