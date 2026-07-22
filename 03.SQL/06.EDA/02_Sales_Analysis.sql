@@ -47,6 +47,26 @@ go
 
 -- 3. monthly revenue trend
 ---------------------------
+-- 3.Monthly Revenue Trend
+--------------------------
+go 
+select * from order_items ; 
+go 
+
+select * from orders; 
+go 
+
+select year(o.order_purchase_timestamp ) as order_year, 
+month(o.order_purchase_timestamp ) as order_month, round( sum(oi.price) ,2) as revenue 
+from order_items oi
+join orders o 
+on oi.order_id = o.order_id
+where order_status = 'delivered'
+group by  year(o.order_purchase_timestamp) , month(o.order_purchase_timestamp )
+order by year(o.order_purchase_timestamp) , month(o.order_purchase_timestamp );
+go 
+
+
 
 -- 4. top 10 selling categories
 -------------------------------
