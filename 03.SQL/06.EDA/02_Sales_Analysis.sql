@@ -120,15 +120,36 @@ order by revenue desc;
 go 
 
 
-
--- 7. revenue by city
+  
+-- 6. revenue by city
 ---------------------
+go 
 
--- 8. average product price by category
+select * from orders ; 
+go 
+
+select * from order_items ; 
+go 
+
+select  * from customers  ; 
+go 
+
+select c.customer_city , round(sum(oi.price),2) as revenue 
+from customers c 
+join orders o 
+on c.customer_id = o.customer_id 
+join order_items oi 
+on o.order_id = oi.order_id
+where order_status = 'delivered' 
+group by c.customer_city 
+order by revenue desc; 
+go 
+
+-- 7. average product price by category
 ---------------------------------------
 
--- 9. highest priced products
+-- 8. highest priced products
 -----------------------------
 
--- 10. lowest priced products
+-- 9. lowest priced products
 -----------------------------
