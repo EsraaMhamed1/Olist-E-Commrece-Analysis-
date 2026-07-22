@@ -7,8 +7,30 @@ go
 -- 1. revenue by category
 -------------------------
 
+
 -- 2. revenue contribution by category
 ---------------------------------------
+with category_revenue as 
+(
+select ct.[ product_category_name_english] as category_name, 
+sum(oi.price) as revenue
+from order_items oi 
+join orders o 
+on o.order_id = oi.order_id 
+join products p 
+on p.product_id = oi.product_id 
+join category_translation ct
+on ct.product_category_name = p.product_category_name 
+where o.order_status = 'delivered'
+group by ct.[ product_category_name_english]
+)
+select category_name, revenue ,
+round(
+revenue *100.0  / sum(revenue) over(),2
+) as revenue_contribution_pct 
+from category_revenue
+order by revenue desc ; 
+go
 
 -- 3. monthly revenue trend
 ---------------------------
