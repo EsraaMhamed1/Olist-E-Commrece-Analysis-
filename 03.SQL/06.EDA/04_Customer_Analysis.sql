@@ -11,7 +11,21 @@ group by customer_state
 order by total_customers desc; 
 go 
 
+  
+--2. Customers by City
+----------------------
+go 
 
+select * from customers ; 
+go 
+
+select customer_city , count(distinct customer_unique_id) as total_customers
+from customers 
+group by customer_city 
+order by total_customers desc; 
+go 
+
+  
 --3. Top 10 Cities by Customers
 -------------------------------
 go 
