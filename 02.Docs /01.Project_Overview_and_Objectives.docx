@@ -1,1 +1,10 @@
 
+1. Introduction
+---------------
+The rapid growth of e-commerce has generated large amounts of transactional data that can be analyzed to support better business decisions.
+This project analyzes the Olist Brazilian E-commerce Dataset to understand customer behavior, sales performance, seller performance, payment methods, delivery efficiency, and customer satisfaction. 
+The project follows a complete data analytics workflow using SQL Server and Power BI.
+
+2. Project Objective
+---------------------
+The main objective of this project is to transform raw transactional data into meaningful business insights that help answer key business questions and support data-driven decision-making.
