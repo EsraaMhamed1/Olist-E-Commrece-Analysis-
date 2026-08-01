@@ -19,7 +19,7 @@ order by products_sold desc ;
 go 
 
 
---2. Highest & Lowest Priced Products
+
 -------------------------------------
 
 --3. Products with No Sales
