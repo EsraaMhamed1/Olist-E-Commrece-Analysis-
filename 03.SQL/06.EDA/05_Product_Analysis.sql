@@ -19,11 +19,23 @@ order by products_sold desc ;
 go 
 
 
-
--------------------------------------
-
+  
 --3. Products with No Sales
 ---------------------------
+go 
+
+select * from products ; 
+go 
+
+select * from order_items; 
+go 
+  
+select p.product_id
+from products p
+left join order_items oi
+on p.product_id = oi.product_id
+where oi.product_id is null;
+go
 
 
 --4. Product Category Distribution
