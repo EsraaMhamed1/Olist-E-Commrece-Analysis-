@@ -24,8 +24,19 @@ order by Revenue desc;
 go 
 
 
-
 -- 2. Sellers Distribution by State
+-----------------------------------
+go 
+
+select * from sellers;
+go
+
+select seller_state, count(seller_id) as num_of_sellers 
+from sellers
+group by seller_state
+order by num_of_sellers desc; 
+go 
+
 -- 3. Revenue by Seller State
 -- 4. Average Revenue per Seller
 -- 5. Sellers with the Most Products Sold
