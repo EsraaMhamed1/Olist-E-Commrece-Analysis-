@@ -62,6 +62,21 @@ go
 
 --4. Product Category Distribution
 ----------------------------------
+go 
+
+select * from products ; 
+go
+
+select * from category_translation ; 
+go 
+
+select ct.[ product_category_name_english] as category  , count(p.product_id) as total_products 
+from products p 
+join category_translation ct 
+on p.product_category_name = ct.product_category_name 
+group by ct.[ product_category_name_english]
+order by total_products desc; 
+go 
 
 
 --5. Product Size & Weight Analysis
