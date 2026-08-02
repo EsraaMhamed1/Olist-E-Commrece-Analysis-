@@ -65,4 +65,31 @@ go
 
 -- 4. Average Revenue per Seller
 --------------------------------
+go 
+
+select * from sellers;
+go 
+
+select * from orders;
+go 
+
+select * from order_items ;
+go 
+
+with seller_revenue as  (
+select s.seller_id , sum(oi.price)  as revenue 
+from sellers s 
+join order_items oi 
+on s.seller_id = oi.seller_id
+join orders o 
+on o.order_id = oi.order_id 
+where order_status = 'delivered'
+group by s.seller_id 
+ )  
+select round(avg(revenue),2) as revenue_per_seller 
+from seller_revenue ; 
+go 
+
+
+
 -- 5. Sellers with the Most Products Sold
