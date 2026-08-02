@@ -81,3 +81,25 @@ go
 
 --5. Product Size & Weight Analysis
 -----------------------------------
+go 
+
+select * from products ;
+go 
+
+select * from category_translation ; 
+go 
+
+select
+ct.[ product_category_name_english] as category,
+round(avg(p.product_weight_g),2) as avg_weight_g,
+round(avg(p.product_length_cm),2) as avg_length_cm,
+round(avg(p.product_height_cm),2) as avg_height_cm,
+round(avg(p.product_width_cm),2) as avg_width_cm
+from products p
+join category_translation ct
+    on p.product_category_name = ct.product_category_name
+group by ct.[ product_category_name_english]
+order by avg_weight_g desc;
+go
+ 
+ 
