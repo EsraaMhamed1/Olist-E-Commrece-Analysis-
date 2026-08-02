@@ -19,6 +19,28 @@ order by products_sold desc ;
 go 
 
 
+--2. Highest & Lowest Priced Products
+--------------------------------------
+go 
+  
+select * from orders ; 
+go 
+
+select * from order_items ; 
+go 
+
+select top (10)
+    oi.product_id , round( max(oi.price) ,2)as price
+from orders o
+join order_items oi
+    on o.order_id = oi.order_id
+where order_status = 'delivered'
+group by oi.product_id 
+order by price desc
+;
+go 
+  
+
   
 --3. Products with No Sales
 ---------------------------
