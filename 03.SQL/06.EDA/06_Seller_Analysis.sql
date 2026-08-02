@@ -93,3 +93,30 @@ go
 
 
 -- 5. Sellers with the Most Products Sold
+-----------------------------------------
+go 
+
+select * from sellers  ; 
+go 
+
+select * from orders ; 
+go 
+
+select * from order_items ;
+go 
+
+select * from products ;
+go 
+
+select s.seller_id , count(oi.product_id) as products_sold
+from sellers s 
+join order_items oi 
+on s.seller_id = oi.seller_id 
+join orders o 
+on o.order_id = oi.order_id 
+where o.order_status = 'delivered'
+group by s.seller_id 
+order by products_sold desc; 
+go 
+
+
