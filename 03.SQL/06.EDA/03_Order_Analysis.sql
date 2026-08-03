@@ -35,6 +35,19 @@ go
 
 
 --3. Delivery Performance
+-------------------------
+go 
+
+select * from orders ; 
+go 
+
+select  avg(
+datediff(hour, order_purchase_timestamp , order_approved_at)) as avg_processing_time_hours 
+from orders
+where order_approved_at is not null
+;
+go
+
 
 
 --4. On-Time vs Late Deliveries
