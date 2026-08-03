@@ -20,6 +20,18 @@ go
 
 
 --2. Orders by Status
+---------------------
+go 
+
+select * from orders ; 
+go 
+
+select order_status , count(order_id)  as orders 
+from orders 
+group by order_status 
+order by orders desc;
+go 
+
 
 
 --3. Delivery Performance
